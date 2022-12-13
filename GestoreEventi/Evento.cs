@@ -50,13 +50,22 @@ namespace GestoreEventi
             return postiPrenotati;
         }
 
+
+        public int GetPostiDisponibili()
+        {
+            int postiAncoraDisponibili = this.capienzaMassimaEvento - this.postiPrenotati;
+            return postiAncoraDisponibili;
+        }
+
+
         //SETTERS
 
-        public string SetTitolo(string titolo)
+        public void SetTitolo(string titolo)
         {
             if (titolo != "")
             {
-                return titolo;
+                this.titolo = titolo;
+
 
             }   else
             {
@@ -78,13 +87,17 @@ namespace GestoreEventi
                 Console.WriteLine("La data inserita è nel passato!");
                 Console.WriteLine("In particolare la tua data sta " + intervalloDiTempo.Days + " giorni passati!");
             
+            } else
+            {
+                this.data = data;
             }
             
+
         }
 
-        public int SetPostiPrenotati(int numero)
+        public void SetPostiPrenotati(int numero)
         {
-           return postiPrenotati = numero ;
+            postiPrenotati = numero ;
             
         }
 
@@ -92,11 +105,11 @@ namespace GestoreEventi
 
         //controllo se la capienza massima di posti sia un numero positivo
 
-        public int SetCapienzaMasssimaEvento(int capienzaMassimaEvento)
+        public void SetCapienzaMasssimaEvento(int capienzaMassimaEvento)
         {
             if (capienzaMassimaEvento >= 0)
             {
-                return capienzaMassimaEvento;
+                this.capienzaMassimaEvento = capienzaMassimaEvento;
             } else
             {
                 throw new Exception("la capacita massima non puo essere un numero negativo!");
@@ -110,33 +123,34 @@ namespace GestoreEventi
         //PrenotaPosti: aggiunge i posti passati come parametro ai posti prenotati.
         //Se l’evento è già passato o non ha posti o non ha più posti disponibili deve sollevar un’eccezione.
 
-        public int PrenotaPosti(int posti)
+        public void PrenotaPosti(int posti)
         {
             if (postiPrenotati == capienzaMassimaEvento)
             {
                 Console.WriteLine("Sold out!");
-                return capienzaMassimaEvento;
 
             }
             else if (postiPrenotati + posti < capienzaMassimaEvento)
             {
                 Console.WriteLine("Numero dei posti prenotati: " + (this.postiPrenotati + posti) );
+
+                this.postiPrenotati = postiPrenotati +posti;
                 int postiAncoraDisponibili = this.capienzaMassimaEvento - (this.postiPrenotati + posti);
                 Console.WriteLine("Sono disponibili " + postiAncoraDisponibili + "posti");
-                return postiAncoraDisponibili;
+                
                 
             }
             else if (postiPrenotati + posti > capienzaMassimaEvento)
             {
                 throw new Exception("Stai prenotanto posti non disponibili!");
             }
-            else return this.postiPrenotati;
+             
         }
 
         //. DisdiciPosti: riduce del i posti prenotati del numero di posti indicati come parametro.
         //Se l’evento è già passato o non ci sono i posti da disdire sufficienti, deve sollevare un’eccezione.
 
-        public int DisdiciPosti(int posti)
+        public void DisdiciPosti(int posti)
         {
             if (postiPrenotati - posti < capienzaMassimaEvento)
             {
@@ -148,7 +162,7 @@ namespace GestoreEventi
                 Console.WriteLine("Numero dei posti prenotati: " + (this.postiPrenotati - posti));
                 int postiAncoraDisponibili = this.capienzaMassimaEvento - (this.postiPrenotati - posti);
                 Console.WriteLine("Sono disponibili " + postiAncoraDisponibili + "posti");
-                return this.postiPrenotati - posti;
+                this.postiPrenotati = this.postiPrenotati - posti;
             }
         }
 
