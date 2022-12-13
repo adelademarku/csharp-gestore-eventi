@@ -31,6 +31,11 @@ namespace GestoreEventi
             return evento;
         }
 
+        
+
+
+
+
         //Metodi 
 
         //aggiunge alla lista del programma eventi un Evento, passato come  parametro al metodo
@@ -69,6 +74,11 @@ namespace GestoreEventi
         {
             evento.Count();
         } 
+
+       // "\nCapacity: {0}"
+
+
+      
 
 
 

@@ -51,12 +51,19 @@ Console.WriteLine("Inserisci il nome del tuo programma Eventi: ");
 string nomeProgrammaEvento = Console.ReadLine();
 Console.WriteLine("Indica il numero degli eventi da inserire: ");
 int numeroEventiDaAggiungere = Int16.Parse(Console.ReadLine());
-
+eventiLista.Capacity = numeroEventiDaAggiungere;
 ProgrammaEventi evento0 = new ProgrammaEventi(nomeProgrammaEvento,eventiLista, dataEvento, capacitaMassimaEvento, postiPrenotati);
 
+Console.WriteLine ("Inserisci il nome del primo evento: ");
 
-evento0.StampaEvento();
+Console.WriteLine("Inserisci la data del evento: ");
 
+Console.WriteLine("Inserisci il numero dei posti totali: ");
+
+
+evento0.ToString();
+
+ 
 
 
 
