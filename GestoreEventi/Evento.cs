@@ -111,8 +111,8 @@ namespace GestoreEventi
             }
             else if (postiPrenotati + posti < capienzaMassimaEvento)
             {
-                Console.WriteLine("Numero dei posti prenotati: " + posti);
-                int postiAncoraDisponibili = capienzaMassimaEvento - postiPrenotati;
+                Console.WriteLine("Numero dei posti prenotati: " + (this.postiPrenotati + posti) );
+                int postiAncoraDisponibili = this.capienzaMassimaEvento - (this.postiPrenotati + posti);
                 Console.WriteLine("Sono disponibili " + postiAncoraDisponibili + "posti");
                 return postiAncoraDisponibili;
                 
@@ -137,7 +137,7 @@ namespace GestoreEventi
             else
             {
                 Console.WriteLine("Numero dei posti prenotati: " + (this.postiPrenotati - posti));
-                int postiAncoraDisponibili = capienzaMassimaEvento - postiPrenotati;
+                int postiAncoraDisponibili = this.capienzaMassimaEvento - (this.postiPrenotati - posti);
                 Console.WriteLine("Sono disponibili " + postiAncoraDisponibili + "posti");
                 return this.postiPrenotati - posti;
             } 
@@ -147,7 +147,7 @@ namespace GestoreEventi
 
         public override string ToString()
         {
-            return "titolo" + this.titolo+ "\tdata: " + data+ "\t capienza massima evento: "+ capienzaMassimaEvento + "\tnumero dei posti prenotati:  "+ postiPrenotati;
+            return "titolo" + this.titolo+ "\tdata: " + data+ "\t capienza massima evento: "+ this.capienzaMassimaEvento + "\tnumero dei posti prenotati:  "+ this.postiPrenotati;
         }
 
 
