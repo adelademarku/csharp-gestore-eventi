@@ -52,7 +52,7 @@ namespace GestoreEventi
 
         //SETTERS
 
-        public string SetTitolo()
+        public string SetTitolo(string titolo)
         {
             if (titolo != "")
             {
@@ -61,11 +61,13 @@ namespace GestoreEventi
             }   else
             {
                 throw new Exception("il titolo non puo essere omésso!");
-            } 
+            }
+
+        
         }
 
         //controllo se la data non è passata 
-        public void SetData()
+        public void SetData(string data)
         {
             DateTime dataOraAttuale = DateTime.Now;
             DateTime dataInserita = DateTime.Parse(data);
@@ -77,12 +79,12 @@ namespace GestoreEventi
                 Console.WriteLine("In particolare la tua data sta " + intervalloDiTempo.Days + " giorni passati!");
             
             }
-
+            
         }
 
-        public int SetPostiPrenotati()
-        { 
-                return postiPrenotati = 0;
+        public int SetPostiPrenotati(int numero)
+        {
+           return postiPrenotati = numero ;
             
         }
 
@@ -90,7 +92,7 @@ namespace GestoreEventi
 
         //controllo se la capienza massima di posti sia un numero positivo
 
-        public int SetCapienzaMasssimaEvento()
+        public int SetCapienzaMasssimaEvento(int capienzaMassimaEvento)
         {
             if (capienzaMassimaEvento >= 0)
             {
@@ -99,6 +101,8 @@ namespace GestoreEventi
             {
                 throw new Exception("la capacita massima non puo essere un numero negativo!");
             }
+
+            
         }
 
         //Mettodi 
@@ -152,12 +156,21 @@ namespace GestoreEventi
 
         //stampa
 
+
         public override string ToString()
         {
-            return "titolo" + this.titolo+ "\tdata: " + data+ "\t capienza massima evento: "+ this.capienzaMassimaEvento + "\tnumero dei posti prenotati:  "+ this.postiPrenotati;
+            string EventoStringa = "\n---------- "
+                + this.titolo
+                + " ----------\n\ndata: "
+                + this.data
+                + "\ncapienza massima evento: "
+                + this.capienzaMassimaEvento
+                + "\nnumero posti prenotati: "
+                + this.postiPrenotati 
+                
+                + "mq\n";
+            return EventoStringa;
         }
-
-
 
 
         public void StampaEvento()
