@@ -19,6 +19,11 @@ namespace GestoreEventi
         //Costruttore
         public Evento(string titolo, string data, int capienzaMassimaEvento, int postiPrenotati)
         {
+            if (titolo == " ")
+            { 
+                throw new Exception("il titolo non puo essere omésso!");
+            }
+
             this.titolo = titolo;
             this.data = data;
             this.capienzaMassimaEvento = capienzaMassimaEvento;
@@ -70,7 +75,7 @@ namespace GestoreEventi
             {
                 Console.WriteLine("La data inserita è nel passato!");
                 Console.WriteLine("In particolare la tua data sta " + intervalloDiTempo.Days + " giorni passati!");
-
+            
             }
 
         }
@@ -129,9 +134,9 @@ namespace GestoreEventi
 
         public int DisdiciPosti(int posti)
         {
-            if (postiPrenotati - posti <= capienzaMassimaEvento)
+            if (postiPrenotati - posti < capienzaMassimaEvento)
             {
-                return postiPrenotati = 0;
+
                 throw new Exception("non puoi disdire posti non prenotati!");
             }
             else
@@ -140,8 +145,10 @@ namespace GestoreEventi
                 int postiAncoraDisponibili = this.capienzaMassimaEvento - (this.postiPrenotati - posti);
                 Console.WriteLine("Sono disponibili " + postiAncoraDisponibili + "posti");
                 return this.postiPrenotati - posti;
-            } 
+            }
         }
+
+
 
         //stampa
 
